@@ -2,6 +2,7 @@
 
 Python package for simulating earthquake rupture surface representation.
 
+![Category Illustration](https://user-images.githubusercontent.com/71461454/219973996-e66d7bb1-d6a3-4984-86e3-935bd1349fac.png)
 
 ## Function 
 ```python
