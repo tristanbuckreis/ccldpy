@@ -47,7 +47,8 @@ Simulate_Rupture_Surface(eqn, eqType, region, em, elon, elat, hypd, Category,
            "SS" = strike slip
            "RV" = reverse thrust
            "NM" = normal thrust
-    saveto = directory where you would like to save output files. (default None; the function will not save files, results are only returned as pandas DataFrame objects in RAM)
+    saveto = directory where you would like to save output files. 
+             (default None; the function will not save files, results are only returned as pandas DataFrame objects)
    
 #### Returns:
     SIM_RESULTS = pandas DataFrame object with 101 simulated rupture surfaces.
