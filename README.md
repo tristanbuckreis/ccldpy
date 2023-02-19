@@ -6,9 +6,9 @@ Python package for simulating earthquake rupture surface representation.
 ## Function 
 ```python
 Simulate_Rupture_Surface(eqn, eqType, region, em, elon, elat, hypd, Category,
-                             strike=None, dip=None, rake=None, 
-                             strike2=None, dip2=None, rake2=None,
-                             mech=None, saveto=None)
+                         strike=None, dip=None, rake=None, 
+                         strike2=None, dip2=None, rake2=None,
+                         mech=None, saveto=None)
 ```
 
 ### Input Parameters:
