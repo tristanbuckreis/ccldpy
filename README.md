@@ -6,6 +6,8 @@ The CCLD program was originially coded in Fortran by Robert Youngs (copyright Am
 1. Updated magnitude-area scaling relationship for shallow-<em>crustal</em> type events (Leonard 2010)
 2. Added magnitude-area scaling relationship for <em>stable</em>-continental type events (Leonard 2010). Magnitude-aspect ratio is assumed equal to 1.0 with same uncertainty as the relation for shallow-crustal type events. Shallow-crustal type relations for the position of hypocenter along the rupture surface are assumed.
 
+The current version (0.0.1) does not compute distances for real seismic stations, which can be perfomed using the P4CF program (Chiou, B.S-J. 2021).
+
 # Installation
 ```python
 pip install ccldpy
@@ -69,7 +71,9 @@ Simulate_Rupture_Surface(eqn, eqType, region, em, elon, elat, hypd, Category,
 
 # References:
 
-Chiou B. S.‐J., and Youngs R. R. 2008. <em>NGA Model for Average Horizontal Component of Peak Ground Motion and Response Spectra</em>, PEER Rept. 2008/09, Pacific Earthquake Engineering Research Center, Berkeley, California.
+Chiou, B. S.-J. (2021). P4CF [https://github.com/bc88bc/P4CF]
+
+Chiou ,B. S.‐J., and Youngs R. R. 2008. <em>NGA Model for Average Horizontal Component of Peak Ground Motion and Response Spectra</em>, PEER Rept. 2008/09, Pacific Earthquake Engineering Research Center, Berkeley, California.
 
 Contreras V. Stewart J. P. Kishida T. Darragh R. B. Chiou B. S.‐J. Mazzoni S. Kuehn N. Ahdi S. K. Wooddell K., and Youngs R. R., et al. 2020. Source and path database, in <em>Data Resources for NGA‐Subduction Project</em>, Stewart J. P. (Editor), Chapter 4, PEER Rept. 2020/02, Pacific Earthquake Engineering Research Center, UC Berkeley, Berkeley, California.
 
