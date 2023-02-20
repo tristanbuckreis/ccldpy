@@ -33,7 +33,7 @@ pip install ccldpy
 
 
 
-# Function
+# Main Function
 ```python
 Simulate_Rupture_Surface(eqn, eqType, region, em, elon, elat, hypd, Category,
                          strike=None, dip=None, rake=None, 
@@ -97,8 +97,6 @@ Simulate_Rupture_Surface(eqn, eqType, region, em, elon, elat, hypd, Category,
 #### Returns:
     - SIM_RESULTS = pandas DataFrame containing all simulated rupture surfaces and statistics
     - SELECTED_FAULT = pandas DataFrame containing the selected rupture surface and statistics
-    
-### Subroutines:
 
 # References:
 
