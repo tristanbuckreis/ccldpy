@@ -25,13 +25,6 @@ E. No nodal plane solutions are known or assumed. Rake (faulting mechanism), str
 ![Category Illustration](https://user-images.githubusercontent.com/71461454/220185818-708986c3-28ff-4dfa-b54b-e225dfe261f3.png)
 <b>Figure 1:</b> Schematic illustration of simulation results for each <em>Category</em>.
 
-# Installation
-```python
-pip install ccldpy
-```
-
-
-
 
 # Main Function
 ```python
