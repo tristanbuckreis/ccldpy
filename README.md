@@ -4,7 +4,7 @@ Python package for simulating earthquake rupture surface representation.
 
 The CCLD program was originially coded in Fortran by Robert Youngs (copyright AmecFW, Inc.), then later updated by Brian Chiou during the NGA-West2 and NGA-Subduction projects (Chiou et al. 2008; Contreras et al. 2020). This version of CCLD replicates the originial simulation code in Python. Key changes to the program include the following:
 1. Updated magnitude-area scaling relationship for shallow-<em>crustal</em> type events (Leonard 2010)
-2. Added magnitude-area scaling relationship for <em>stable</em>-continental type events (Leonard 2010). Magnitude-aspect ratio relationship and location of hypocenter along the rupture surface relations for shallow-crustal type events are assumed.
+2. Added magnitude-area scaling relationship for <em>stable</em>-continental type events (Leonard 2010). Magnitude-aspect ratio is assumed equal to 1.0 with same uncertainty as the relation for shallow-crustal type events. Shallow-crustal type relations for the position of hypocenter along the rupture surface are assumed.
 
 # Installation
 ```python
