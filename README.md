@@ -2,7 +2,13 @@
 
 Python package for simulating earthquake rupture surface representation.
 
-![Category Illustration](https://user-images.githubusercontent.com/71461454/219973996-e66d7bb1-d6a3-4984-86e3-935bd1349fac.png)
+# Installation
+```python
+pip install ccldpy
+```
+
+
+
 
 ## Function 
 ```python
@@ -56,4 +62,14 @@ Simulate_Rupture_Surface(eqn, eqType, region, em, elon, elat, hypd, Category,
     SELECTED_FAULT = pandas DataFrame object with selected representative rupture surface.
     
 ### Subroutines:
+
+# References:
+
+Chiou B. S.‐J., and Youngs R. R. 2008. <em>NGA Model for Average Horizontal Component of Peak Ground Motion and Response Spectra</em>, PEER Rept. 2008/09, Pacific Earthquake Engineering Research Center, Berkeley, California.
+
+Leonard, M. (2010). Earthquake fault scaling: Self-consistent relating of rupture length, width, average displacement, and moment release. Bulletin of the Seismological Society of America, 100 (5A), 1971 - 1988.
+
+Veness, C. (n.d.). <em>Movable type scripts</em>. Calculate distance and bearing between two Latitude/Longitude points using haversine formula in JavaScript. Retreieved from https://movable-type.co.uk/scripts/latlon.html
+
+
 
