@@ -23,7 +23,7 @@ D. Only one nodal plane solution is known or assumed, but with some uncertainty.
 E. No nodal plane solutions are known or assumed. Rake (faulting mechanism), strike [0<sup>o</sup> - 360<sup>o</sup>), and dip [0<sup>o</sup> - 90<sup>o</sup>] are randomly assigned with equal probability during each simulation.
 
 ![Category Illustration](https://user-images.githubusercontent.com/71461454/220185818-708986c3-28ff-4dfa-b54b-e225dfe261f3.png)
-Figure 1: Schematic illustration of simulation results for each <em>Category</em>.
+<center><b>Figure 1:</b> Schematic illustration of simulation results for each <em>Category</em>.</center>
 
 # Installation
 ```python
