@@ -10,7 +10,7 @@ The current version of ccldpy (0.0.1) does not compute distances for real seismi
 
 ### Simulation Methods:
 
-The current version of ccldpy (0.0.1) supports five methods of simulation, which are specificed using <em>Category</em> indicators described below:
+The current version of ccldpy (0.0.1) supports five methods of simulation, which are specificed using the <em>Category</em> indicators described below. For each method, the program runs 101 simulations, and identifies the rupture surface of the simulation that minimizes the median distance computed on a pseudo-grid of locations.
 
 A. When two nodal plane solutions (strike, dip, and rake) are known, however the first solution is preferred. Only the area, aspect-ratio, and position of hypocenter on the rupture surface are randomized between simulations assuming a Gaussian Distribution centered about the median values.
 
@@ -45,44 +45,58 @@ Simulate_Rupture_Surface(eqn, eqType, region, em, elon, elat, hypd, Category,
 
 #### Required Keys:
 
-    eqn = unique integer identifier for the event
-    eqType = type of eathquake:
-             "crustal" = shallow-crustal earthquake
-             "intraslab" = intraslab-subduction earthquake
-             "interface" = interface-subduction earthquake
-             "stable" = stable continental earthquake
-    region = geographic region where the earthquake occured:
-             0 = Japan
-             1 = Chile
-             2 = Other
-    em = earthquake moment magnitude
-    elon = hypocenter longitude (degrees)
-    elat = hypocenter latitude (degrees)
-    hypd = hypocenter depth (km)
-    Category = code for rutpure simulation constraints:
-               "A" = strike, dip, and rake are known for two nodal planes, however nodal plane 1 is preferrd.
-               "B" = strike, dip, and rake are known for two nodal planes, however nodal plane 2 is preferrd.
-               "C" = strike, dip, and rake are known for two nodal planes, and neither is preferred.
-               "D" = One nodal plane solution for strike, dip, and rake. Randomize the strike and dip.
-               "E" = No nodal plane solutions. Randomize strike. 
+    - eqn = unique integer identifier for the event
+    - eqType = type of eathquake:
+               "crustal" = shallow-crustal earthquake
+               "intraslab" = intraslab-subduction earthquake
+               "interface" = interface-subduction earthquake
+               "stable" = stable continental earthquake
+    - region = geographic region where the earthquake occured:
+               0 = Japan
+               1 = Chile
+               2 = Other
+    - em = earthquake moment magnitude (Mw)
+    - elon = hypocenter longitude (degrees)
+    - elat = hypocenter latitude (degrees)
+    - hypd = hypocenter depth (km)
+    - Category = code for rupture simulation constraints:
+                 "A" = strike, dip, and rake for first nodal plane solution preferred 
+                       (optional "strike", "dip", and "rake" arguments are required)
+                 "B" = strike, dip, and rake for second nodal plane solution preferred
+                       (optional "strike2", "dip2", and "rake2" arguments are required)
+                 "C" = strike, dip, and rake are known for two nodal planes, and neither is preferred
+                       (optional "strike", "dip", and "rake" arguments are required)
+                       (optional "strike2", "dip2", and "rake2" arguments are required)
+                 "D" = One nodal plane solution for strike, dip, and rake; randomize the strike and dip
+                       (optional "strike", "dip", and "rake" arguments are required)
+                 "E" = No nodal plane solutions; randomize strike, dip, and rake
+                       (dip and rake are assigned based on faulting mechanism)
+                       (if optional "mech" argument is not speficied, simulations randomly assign one)
                             
 #### Optional Keys:
-    strike = strike (degrees) of nodal plane solution 1. Required if dip and/or rake are speficied. (default None)
-    dip = dip (degrees) of nodal plane solution 1. Required if strike and/or rake are speficied. (default None)
-    rake = rake (degrees) of nodal plane solution 1, Required if strike and/or dip are speficied. (default None)
-    strike2 = strike (degrees) of nodal plane solution 2. Required if dip2 and/or rake2 are speficied. (default None)
-    dip2 = dip (degrees) of nodal plane solution 2. Required if strike2 and/or rake2 are speficied. (default None)
-    rake2 = rake (degrees) of nodal plane solution 2, Required if strike2 and/or dip2 are speficied. (default None)
-    mech = faulting mechanism: (default None)
-           "SS" = strike slip
-           "RV" = reverse thrust
-           "NM" = normal thrust
-    saveto = directory where you would like to save output files. 
-             (default None; the function will not save files, results are only returned as pandas DataFrame objects)
+    - strike = strike (degrees) of first nodal plane solution (default None)
+               (required if Category "A", "C", or "D" is specified) 
+    - dip = dip (degrees) of first nodal plane solution (default None)
+            (required if Category "A", "C", or "D" is specified) 
+    - rake = rake (degrees) of first nodal plane solution (default None)
+             (required if Category "A", "C", or "D" is specified) 
+    - strike2 = strike (degrees) of first nodal plane solution (default None)
+                (required if Category "B" or "C" is specified) 
+    - dip2 = dip (degrees) of first nodal plane solution (default None)
+             (required if Category "B" or "C" is specified) 
+    - rake2 = rake (degrees) of first nodal plane solution (default None)
+              (required if Category "B" or "C" is specified) 
+    - mech = faulting mechanism (default None)
+             (if not specified, and eqType is "crustal" or "stable", simulations randomply assign one)
+             "SS" = strike-slip
+             "RV" = reverse-thrust
+             "NM" = normal-thrust
+    - saveto = directory where you would like to save output files (default None)
+               (if not specified, results are not saved as files on local memory)
    
 #### Returns:
-    SIM_RESULTS = pandas DataFrame object with 101 simulated rupture surfaces.
-    SELECTED_FAULT = pandas DataFrame object with selected representative rupture surface.
+    - SIM_RESULTS = pandas DataFrame containing all simulated rupture surfaces and statistics
+    - SELECTED_FAULT = pandas DataFrame containing the selected rupture surface and statistics
     
 ### Subroutines:
 
