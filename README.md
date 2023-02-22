@@ -3,7 +3,7 @@
 Python package for simulating earthquake rupture surface representation.
 
 The CCLD program was originially coded in Fortran by Robert Youngs (copyright AmecFW, Inc.), then later updated by Brian Chiou during the NGA-West2 and NGA-Subduction projects (Chiou et al. 2008; Contreras et al. 2020). This version of CCLD replicates the originial simulation code in Python. Key changes to the program include the following:
-1. Updated magnitude-area scaling relationship for shallow-<em>crustal</em> type events (Leonard 2010)
+1. Updated magnitude-area scaling relationship for shallow-<em>crustal</em> type events (Leonard 2014)
 2. Added magnitude-area scaling relationship for <em>stable</em>-continental type events (Leonard 2010). Magnitude-aspect ratio is assumed equal to 1.0 with same uncertainty as the relation for shallow-crustal type events. Shallow-crustal type relations for the position of hypocenter along the rupture surface are assumed.
 
 The current version of ccldpy (0.0.1) does not compute distances for real seismic stations, which can be perfomed using the P4CF program (Chiou, B.S-J. 2021).
@@ -100,5 +100,7 @@ Chiou ,B. S.‐J., and Youngs R. R. (2008). <em>NGA Model for Average Horizontal
 Contreras V. Stewart J. P. Kishida T. Darragh R. B. Chiou B. S.‐J. Mazzoni S. Kuehn N. Ahdi S. K. Wooddell K., and Youngs R. R., et al. (2020). Source and path database, in <em>Data Resources for NGA‐Subduction Project</em>, Stewart J. P. (Editor), Chapter 4, PEER Rept. 2020/02, Pacific Earthquake Engineering Research Center, UC Berkeley, Berkeley, California.
 
 Leonard, M. (2010). Earthquake fault scaling: Self-consistent relating of rupture length, width, average displacement, and moment release. <em>Bulletin of the Seismological Society of America</em>, 100 (5A), 1971 - 1988.
+
+Leonard, M. (2014). Self-consistent earthquake fault-scaling relations: Update and extension to stable continental strike-slip faults. <em>Bulletin of the Seismological Society of America</em>, 104 (6), 2953 - 2965.
 
 Veness, C. (n.d.). <em>Movable type scripts</em>. Calculate distance and bearing between two Latitude/Longitude points using haversine formula in JavaScript. Retreieved from https://movable-type.co.uk/scripts/latlon.html
