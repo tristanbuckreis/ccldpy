@@ -2,9 +2,10 @@
 
 Python package for simulating earthquake rupture surface representation.
 
-The CCLD program was originially coded in Fortran by Robert Youngs (copyright AmecFW, Inc.), then later updated by Brian Chiou during the NGA-West2 and NGA-Subduction projects (Chiou et al. 2008; Contreras et al. 2020). This version of CCLD replicates the originial simulation code in Python. Key changes to the program include the following:
+The CCLD program was originially coded in Fortran by Brian Chiou and Robert Youngs (Chiou and Youngs 2008; Appendix B), then later updated by Brian Chiou during the NGA-West2 and NGA-Subduction projects (Chiou et al. 2008; Contreras et al. 2020). This version of CCLD replicates the originial simulation code in Python. Key changes to the program include the following:
 1. Updated magnitude-area scaling relationship for shallow-<em>crustal</em> type events (Leonard 2014)
-2. Added magnitude-area scaling relationship for <em>stable</em>-continental type events (Leonard 2010). Magnitude-aspect ratio is assumed equal to 1.0 with same uncertainty as the relation for shallow-crustal type events. Shallow-crustal type relations for the position of hypocenter along the rupture surface are assumed.
+2. Added magnitude-area scaling relationship for <em>stable</em>-continental type events (Leonard 2014). Shallow-crustal type relations for the position of hypocenter along the rupture surface are assumed.
+3. Flexibility to select different magnitude-based scaling relationships.
 
 The current version of ccldpy (0.0.1) does not compute distances for real seismic stations, which can be perfomed using the P4CF program (Chiou, B.S-J. 2021).
 
@@ -31,7 +32,7 @@ E = No nodal plane solutions are known or assumed. Rake (faulting mechanism), st
 Simulate_Rupture_Surface(eqn, eqType, region, em, elon, elat, hypd, Category,
                          strike=None, dip=None, rake=None, 
                          strike2=None, dip2=None, rake2=None,
-                         mech=None, saveto=None)
+                         mech=None, saveto=None, model=None)
 ```
 
 ### Input Parameters:
@@ -86,6 +87,20 @@ Simulate_Rupture_Surface(eqn, eqType, region, em, elon, elat, hypd, Category,
              "NM" = normal-thrust
     - saveto = directory where you would like to save output files (default None)
                (if not specified, results are not saved as files on local memory)
+    - model = Magnitude-based scaling relationship model to simulate area and aspect ratio (width/length)
+             "wells_and_coppersmith_1994" = Wells, D.L. and K.J. Coppersmith (1994) New empirical relationships 
+                              among magnitude, rupture length, rupture width, rupture area, and surface 
+                              displacement, Bull. Seismol. Soc. Am. 84 (4), 974 - 1002.
+                              Can be used for "crustal" and "stable" eqTypes
+             "leonard_2014" = Leonard, M. (2014) Self-consistent earthquake fault-scaling relations: Update
+                              and extension to stable continental strike-slip faults, Bull. Seismol. Soc. 
+                              Am. 104 (6), 2953 - 2965.
+                              Can be used for "custal" and "stable" eqTypes (default)
+             "contreras_et_al_2022" = Contreras, V., J.P. Stewart, T. Kishida, R.B. Darragh, B.-S.J. Chiou,
+                              S. Mazzoni, R.R. Youngs, N.M. Kuehn, S.K. Ahdi, K. Wooddell, R. Boroschek, F.
+                              Rojas, and J. Ordenes (2022) NGA-Sub source and path database, Earthq. Spectra
+                              38 (2), 799 - 840.
+                              Can be used for "intraslab" and "interface" eqTypes (default)
    
 #### Returns:
     - SIM_RESULTS = pandas DataFrame containing all simulated rupture surfaces and statistics
@@ -99,8 +114,10 @@ Chiou ,B. S.‐J., and Youngs R. R. (2008). <em>NGA Model for Average Horizontal
 
 Contreras V. Stewart J. P. Kishida T. Darragh R. B. Chiou B. S.‐J. Mazzoni S. Kuehn N. Ahdi S. K. Wooddell K., and Youngs R. R., et al. (2020). Source and path database, in <em>Data Resources for NGA‐Subduction Project</em>, Stewart J. P. (Editor), Chapter 4, PEER Rept. 2020/02, Pacific Earthquake Engineering Research Center, UC Berkeley, Berkeley, California.
 
-Leonard, M. (2010). Earthquake fault scaling: Self-consistent relating of rupture length, width, average displacement, and moment release. <em>Bulletin of the Seismological Society of America</em>, 100 (5A), 1971 - 1988.
+Contreras, V., J.P. Stewart, T. Kishida, R.B. Darragh, B.-S.J. Chiou,S. Mazzoni, R.R. Youngs, N.M. Kuehn, S.K. Ahdi, K. Wooddell, R. Boroschek, F. Rojas, and J. Ordenes (2022) NGA-Sub source and path database, <em>Earthq. Spectra</em> <b>38</b> (2), 799 - 840.
 
-Leonard, M. (2014). Self-consistent earthquake fault-scaling relations: Update and extension to stable continental strike-slip faults. <em>Bulletin of the Seismological Society of America</em>, 104 (6), 2953 - 2965.
+Leonard, M. (2014). Self-consistent earthquake fault-scaling relations: Update and extension to stable continental strike-slip faults. <em>Bull. Seismol. Soc. Am.</em> <b>104</b> (6), 2953 - 2965.
 
-Veness, C. (n.d.). <em>Movable type scripts</em>. Calculate distance and bearing between two Latitude/Longitude points using haversine formula in JavaScript. Retreieved from https://movable-type.co.uk/scripts/latlon.html
+Veness, C. (n.d.). <em>Movable type scripts</em>. Calculate distance and bearing between two Latitude/Longitude
+
+Wells, D.L. and K.J. Coppersmith (1994) New empirical relationships among magnitude, rupture length, rupture width, rupture area, and surface displacement, <em>Bull. Seismol. Soc. Am.</em> <b>84</b> (4), 974 - 1002.
