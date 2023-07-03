@@ -16,10 +16,11 @@ Cython code is pre-compiled into the <em>ccldpy.cp39-win_amd64.pyd</em> file, wh
 
 1. Download <em>ccldpy.cp39-win_amd64.pyd</em> into your {<em>desired path</em>}.
 2. Import <em>ccldpy</em> into your code:<br>
-   &ensp;&ensp; import sys<br>
-   &ensp;&ensp; sys.path.append({<em>desired path</em>})<br>
-   &ensp;&ensp; import ccldpy<br>
-
+```python
+import sys
+sys.path.append({desired path})
+import ccldpy
+```
 # 
 ### Simulation Methods:
 
