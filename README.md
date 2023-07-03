@@ -9,6 +9,18 @@ The CCLD program was originially coded in Fortran by Brian Chiou and Robert Youn
 
 The current version of ccldpy (0.0.1) does not compute distances for real seismic stations, which can be perfomed using the P4CF program (Chiou, B.S-J. 2021).
 
+# Installation/Usage
+
+Cython code is pre-compiled into the <em>ccldpy.cp39-win_amd64.pyd</em> file, which can be imported into Python environments. 
+### Simplified instructions:
+
+1. Download <em>ccldpy.cp39-win_amd64.pyd</em> into your {<em>desired path</em>}.
+2. Import <em>ccldpy</em> into your code:<br>
+   &ensp;&ensp; import sys<br>
+   &ensp;&ensp; sys.path.append({<em>desired path</em>})<br>
+   &ensp;&ensp; import ccldpy<br>
+
+# 
 ### Simulation Methods:
 
 The current version of ccldpy (0.0.1) supports five methods of simulation, which are specificed using the <em>Category</em> indicators described below. For each method, the program runs 101 simulations, and identifies the rupture surface of the simulation that minimizes the median distance computed for a pseudo-grid of locations.
