@@ -1,12 +1,12 @@
 # ccldpy
 
-Python package for simulating earthquake rupture surface representation for the prupose of computing finite-fault distance metrics (e.g., closest distance to the rupture surface, $R_{RUP}$; Joyner-Boore distance, $R_{JB}$).
+Python package for simulating earthquake rupture surface representation for the purpose of computing finite-fault distance metrics (e.g., closest distance to the rupture surface, $R_{RUP}$; Joyner-Boore distance, $R_{JB}$).
 
-The CCLD program was originially coded in Fortran by Brian Chiou and Robert Youngs (Chiou and Youngs 2008; Appendix B), then later updated by Brian Chiou during the NGA-West2 and NGA-Subduction projects (Chiou and Youngs 2008; Contreras et al. 2022). This version of CCLD replicates the originial simulation code in Python. Key changes to the program include the following:
+The CCLD program was originally coded in Fortran by Brian Chiou and Robert Youngs (Chiou and Youngs 2008; Appendix B), then later updated by Brian Chiou during the NGA-West2 and NGA-Subduction projects (Chiou and Youngs 2008; Contreras et al. 2022). This version of CCLD replicates the original simulation code in Python. Key changes to the program include the following:
 1. Added magnitude-scaling relationships for shallow-<em>crustal</em> type events (Wells & Coppersmith 1994; Leonard 2014; and Thingbaijam et al. 2017)
 2. Added magnitude-scaling relationship for <em>stable</em>-continental type events (Leonard 2014). Shallow-crustal type relations for the position of hypocenter along the rupture surface are assumed (Chiou and Youngs 2008).
 3. Added magnitude-scaling relationship for <em>interface</em> subduction type events (Thingbaijam et al. 2017). Subduction-type relations for the position of the hypocenter on the rupture surface are assumed (Contreras et al. 2022)
-4. Flexibility to specify the number of simulations to use for each magnitude-scaling relation (e.g., use <em>N</em> simulations from one scaling-relation or parition <em>N</em> simulations into <em>M</em> approrpiate scaling-relations.
+4. Flexibility to specify the number of simulations to use for each magnitude-scaling relation (e.g., use <em>N</em> simulations from one scaling-relation or partition <em>N</em> simulations into <em>M</em> appropriate scaling-relations.
    
 The current version of ccldpy (2.0.0) does not compute distances for real seismic stations, which can be perfomed using the P4CF program (Chiou, B.S-J. 2021).
 
@@ -18,11 +18,11 @@ Scaling-relationships are defined for active shallow-<em>crustal</em>, <em>stabl
 
 Four scaling-relationships for active shallow-crustal type earthquakes are implemented within <em>ccldpy</em>:
 1. Wells and Coppersmith (1994): relationships for area, length, and width; one set of coefficients for all styles-of-faulting (i.e., mechanism)
-2. Chiou and Youngs (2008): only an aspect ratio relationship; seperate coefficients for strike-slip, normal, and reverse styles-of-faulting
-3. Lenoard (2014): relationships for area, length, and width; seperate coefficients for strike-slip and dip-slip (normal and reverse) styles-of-faulting
-4. Thingbaijam et al. (2017): relationships for area, length, and width; seperate coefficients for strike-slip, normal, and reverse styles of faulting
+2. Chiou and Youngs (2008): only an aspect ratio relationship; separate coefficients for strike-slip, normal, and reverse styles-of-faulting
+3. Lenoard (2014): relationships for area, length, and width; separate coefficients for strike-slip and dip-slip (normal and reverse) styles-of-faulting
+4. Thingbaijam et al. (2017): relationships for area, length, and width; separate coefficients for strike-slip, normal, and reverse styles of faulting
 
-Wells and Coppersmith (1994) present seperate coefficients for different styles-of-faulting, however the authors do not recommend using these coefficients and instead recommend the "all" set of coefficients. Chiou and Youngs (2008), Leonard (2014), and Thingbaijam et al. (2017) recommend using different sets of coefficients for different styles-of-faulting. Since Chiou and Youngs (2008) only present an aspect ratio ($AR$) relationship, it must be used in combination with the other models to develop a rupture surface (details discussed in the <em>Generating Rupture Geometries</em> section) of the documentation.
+Wells and Coppersmith (1994) present separate coefficients for different styles-of-faulting, however the authors do not recommend using these coefficients and instead recommend the "all" set of coefficients. Chiou and Youngs (2008), Leonard (2014), and Thingbaijam et al. (2017) recommend using different sets of coefficients for different styles-of-faulting. Since Chiou and Youngs (2008) only present an aspect ratio ($AR$) relationship, it must be used in combination with the other models to develop a rupture surface (details discussed in the <em>Generating Rupture Geometries</em> section) of the documentation.
 
 ![ccldpy - crustal scaling relations](https://github.com/tristanbuckreis/ccldpy/assets/71461454/bf358c1c-c250-45a1-b03d-6dc3f2e4e162)
 <b>Figure 1:</b> Median magnitude-scaling relationships for active shallow-crustal events.
@@ -37,8 +37,8 @@ $$W = \sqrt{A / AR}$$
 
 ### Stable-Continental Shallow-Crustal Earthquakes:
 
-Only one scaling-relationship for stable-continental shallow-scrustal type earthquakes is implemented within <em>ccldpy</em>:
-1. Leonard (2014): relationships for area, length, and width; seperate coefficients for strike-slip, normal, and reverse styles-of-faulting
+Only one scaling-relationship for stable-continental shallow-crustal type earthquakes is implemented within <em>ccldpy</em>:
+1. Leonard (2014): relationships for area, length, and width; separate coefficients for strike-slip, normal, and reverse styles-of-faulting
 
 ![ccldpy - stable scaling relations](https://github.com/tristanbuckreis/ccldpy/assets/71461454/18319da1-861d-43bd-8b06-0f0a52248ac6)
 <b>Figure 2:</b> Median magnitude-scaling relationships for stable-continental shallow-crustal events.
@@ -47,7 +47,7 @@ Only one scaling-relationship for stable-continental shallow-scrustal type earth
 
 Two scaling-relationships are implemented within <em>ccldy</em>:
 1. Thingbaijam et al. (2017): relationships for area, length, and width; only interface earthquakes
-2. Contreras et al. (2022): relationships for area and aspect ratio; seperate coefficients for interface and intra-slab type events
+2. Contreras et al. (2022): relationships for area and aspect ratio; separate coefficients for interface and intra-slab type events
 
 ![ccldpy - subduction scaling relations](https://github.com/tristanbuckreis/ccldpy/assets/71461454/4afcbef6-9967-45e0-8d92-fbc6ba879760)
 <b>Figure 3:</b> Median magnitude-scaling relationships for subduction (interface and intra-slab) events.
@@ -72,7 +72,7 @@ The position of the hypocenter on the rupture surface is also randomized for eac
 
 ### Specifying Scaling-Relationships:
 
-The scaling-relationships proposed by Wells & Coppersmith (1994), Leonard (2014), Thingbaijam et al. (2017), and Contreras et al. (2022) are self-consistent and provide all the necessary information needed to generate a rupture surface. As such, these models are implementd as seperate branches within <em>ccldpy</em>. Chiou and Youngs (2008), which is only applicable for shallow-crustal type events, only provides $AR$, which is insufficient by itself to define a rupture geometry. Therefore, the Chiou and Youngs (2008) $AR$ relationship can be used with the $A$-relationships proposed by Wells and Coppersmith (1994), Leonard (2014), and Thingbaijam et al. (2017) within <em>ccldpy</em> as three seperate branches. Table 1 summarizes all current branches implemented in <em>ccldpy</em> for each type of earthquake.
+The scaling-relationships proposed by Wells & Coppersmith (1994), Leonard (2014), Thingbaijam et al. (2017), and Contreras et al. (2022) are self-consistent and provide all the necessary information needed to generate a rupture surface. As such, these models are implemented as separate branches within <em>ccldpy</em>. Chiou and Youngs (2008), which is only applicable for shallow-crustal type events, only provides $AR$, which is insufficient by itself to define a rupture geometry. Therefore, the Chiou and Youngs (2008) $AR$ relationship can be used with the $A$-relationships proposed by Wells and Coppersmith (1994), Leonard (2014), and Thingbaijam et al. (2017) within <em>ccldpy</em> as three separate branches. Table 1 summarizes all current branches implemented in <em>ccldpy</em> for each type of earthquake.
 
 <b>Table 1</b>: Summary of scaling-relationship branches currently implemented in <em>ccldpy</em>.
 <table>
@@ -142,7 +142,7 @@ The scaling-relationships proposed by Wells & Coppersmith (1994), Leonard (2014)
     </tbody>
 </table>
 
-# Selection of the Prefered Rupture Geometry:
+# Selection of the Preferred Rupture Geometry:
 <em>ccldpy</em> generates a stochastic set of possible rupture surfaces given the available source metadata as outlined above. The objective is to select the most probable surface which does not result in atypically short or long finite-fault distances (e.g., $R_{RUP}$) for any given site, when published finite-fault models from the literature are not available. This is done by computing rupture distances ($R_{RUP}$) for a grid of pseudo-stations for each rupture realization (Figure 4). The most-probable rupture surface, which is ultimately selected to compute real distance metrics, is that which minimizes the squared difference between $R_{RUP}$ and the median $R_{RUP}$ at each pseudo-station. In other words, the optimal rupture surface for the purpose of computing reasonable finite-fault distances is that which minimizes the following expression:
 
 $$\sum_{r = 1}^{N_r} \sum_{s = 1}^{N_S} (R_{RUP,median,s} - R_{RUP,r,s})^2$$
@@ -150,7 +150,7 @@ $$\sum_{r = 1}^{N_r} \sum_{s = 1}^{N_S} (R_{RUP,median,s} - R_{RUP,r,s})^2$$
 where $N_r$ and $N_s$ represent the total number of simulated rupture surfaces and pseudo-stations, respectively; $R_{RUP,r,s}$ is the rupture distance between simulated rupture $r$ and pseudo-station $s$; and $R_{RUP,median,s}$ is the median rupture distance at pseudo-station $s$ from all simulated rupture surfaces.
 
 ![ccldpy - grid of pseudo-stations](https://github.com/tristanbuckreis/ccldpy/assets/71461454/db6ad04c-1b57-41a1-a3aa-f77069abc471)
-<b>Figure 4:</b> Plan view of grid of pseudo-stations distributed around a realization of a rimulated rupture surface.
+<b>Figure 4:</b> Plan view of grid of pseudo-stations distributed around a realization of a simulated rupture surface.
 
 # Installation/Usage
 
@@ -167,7 +167,7 @@ import ccldpy
 # 
 ### Simulation Methods:
 
-The current version of ccldpy (2.0.0) supports five methods of simulation, which are specificed using the <em>method</em> indicators described below. 
+The current version of ccldpy (2.0.0) supports five methods of simulation, which are specified using the <em>method</em> indicators described below. 
 
 A = One or two nodal plane solutions (strike, dip, and rake) are known, however the first solution is preferred. Only the area, aspect-ratio, and position of hypocenter on the rupture surface are randomized between simulation. This method is not recommended because in reality we cannot be certain of a preferred orientation.
 
@@ -175,7 +175,7 @@ B = Two nodal plane solutions are known, however the second solution is preferre
 
 C = Two nodal plane solutions are known, and neither is preferred over the other. Each simulation will randomly select which nodal plane solution to use, and the area, aspect-ratio, and position of hypocenter on the rupture surface are also randomized. This is the recommended method when two nodal plane solutions are known.
 
-D = Only one nodal plane solution is known or assumed, but with some uncertainty. The given rake angle is used to assign rupture mechanism (<u>S</u>trike-<u>S</u>lip, <u>N</u>or<u>M</u>al dip-slip, or <u>R</u>e<u>V</u>erse dip-slip - for shallow-crustal or stable-continetal type events) and the strike and dip are randomized with &#177; 30<sup>o</sup> and &#177; 10<sup>o</sup>, respectively. The area, aspect-ratio, and position of hypocenter on the rupture surface are also randomized between simulations. This method is not recommended for general applications, exceptions are when there is outstanding evidence that supports a known or preferred nodal plane solution.
+D = Only one nodal plane solution is known or assumed, but with some uncertainty. The given rake angle is used to assign rupture mechanism (<u>S</u>trike-<u>S</u>lip, <u>N</u>or<u>M</u>al dip-slip, or <u>R</u>e<u>V</u>erse dip-slip - for shallow-crustal or stable-continental type events) and the strike and dip are randomized with &#177; 30<sup>o</sup> and &#177; 10<sup>o</sup>, respectively. The area, aspect-ratio, and position of hypocenter on the rupture surface are also randomized between simulations. This method is not recommended for general applications, exceptions are when there is outstanding evidence that supports a known or preferred nodal plane solution.
 
 E = No nodal plane solutions are known or assumed. Rake (faulting mechanism), strike [0<sup>o</sup> - 360<sup>o</sup>), and dip [0<sup>o</sup> - 90<sup>o</sup>] are randomly assigned with equal probability during each simulation. This is the recommended method when there is missing nodal plane information.
 
@@ -201,12 +201,12 @@ simulate_rupture_surface(eqid, eqType, region, elat, elon, hypd, magnitude, meth
         "intraslab" = intraslab-type in subduction regimes
         "interface" = interface-type in subduction regimes
         "stable" = shallow-crustal in stable-continental regimes
-    - region = geographic region where the earthquake occured"
+    - region = geographic region where the earthquake occurred"
         "japan"
         "chile"
         "other"
     - elat = hypocenter latitude (degrees)
-    - elon = hypocenter longiude (degrees)
+    - elon = hypocenter longitude (degrees)
     - hypd = hypocenter depth (km); positive into the ground
     - magnitude = earthquake moment magnitude (Mw)
     - method = code for rupture simulation constraints
@@ -223,7 +223,7 @@ simulate_rupture_surface(eqid, eqType, region, elat, elon, hypd, magnitude, meth
               Warning: not recommended
         "E" = No nodal plane solutions; randomize strike, dip, and rake
               (dip and rake are assigned based on faulting mechanism)
-              (if optional "mechanism" argument is not speficied, simulations randomly assign one)
+              (if optional "mechanism" argument is not specified, simulations randomly assign one)
     - nsims = Number of simulations assigned to each M-scaling relationship. Total number of simulations should be odd.
         nsims[0] = Wells & Coppersmith (1994) - [recommended 334]
         nsims[1] = Leonard (2014) - [recommended 333]
@@ -234,7 +234,7 @@ simulate_rupture_surface(eqid, eqType, region, elat, elon, hypd, magnitude, meth
         nsims[6] = Contreras et al. (2022) - [recommended 333]
                             
 #### Optional Keys:
-    - mechanim = known or preferred style-of-faulting [default None]
+    - mechanism = known or preferred style-of-faulting [default None]
         "SS" = strike-slip: (-180 < rake < -150) or (-30 < rake < 30) or (150 < rake < 180)
         "NM" = normal: -150 < rake < -30
         "RV" = reverse: 30 < rake < 150
