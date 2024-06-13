@@ -160,7 +160,8 @@ where $N_r$ and $N_s$ represent the total number of simulated rupture surfaces a
 
 # Installation/Usage
 
-The <em>ccldpy.py</em> file can be imported into Python environments. 
+The <em>ccldpy.py</em> file can be imported into Python environments. This is the only file that is needed (see <em>Non-Technical Notes</em> section for additional information).
+
 ### Simplified instructions:
 
 1. Download <em>ccldpy.py</em> into your {<em>desired path</em>}.
@@ -258,6 +259,14 @@ simulate_rupture_surface(eqid, eqType, region, elat, elon, hypd, magnitude, meth
 #### Returns:
     - SIMULATIONS = pandas DataFrame object containing all simulated rupture surfaces
     - SELECTED = pandas DataFrame object containing the selected rupture surface and statistics
+
+# Non-Technical Note:
+
+The follow files are not supported by <em>ccldpy</em> (v2.0.0); they are deprecated files associated with <em>ccldpy</em> (v1.0.0):
+- ccldpy.c
+- ccldpy.cp39-win_amd64.pyd
+- ccldpy.pyx
+- setup.py
 
 # References:
 
