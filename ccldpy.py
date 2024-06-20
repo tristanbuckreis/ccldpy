@@ -902,6 +902,7 @@ def get_rupture_surface_simulations(eqid,
         dips = np.where(mechanisms == 'SS', 89.9999999, mechanisms) # cannot divide by zero
         dips = np.where(dips == 'NM', 55.0, dips)
         dips = np.where(dips == 'RV', 40.0, dips)
+        dips = dips.astype(float)
     dips = np.where(dips > 89.9999999, 89.9999999, dips) # dip <= 90 # cannot divide by zero
     
     # Convert degrees to radians  -------------------------------------------------------------------------------------------
