@@ -1089,6 +1089,7 @@ def get_rupture_surface_simulations(eqid,
 
     # Convert radians to degrees  -------------------------------------------------------------------------------------------
     strikes = np.round( strikes * 180 / np.pi, 6) 
+    dips = np.round( dips * 180 / np.pi, 6)
 
     # Return everything  ----------------------------------------------------------------------------------------------------
     return(median_simulation,
