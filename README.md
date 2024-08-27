@@ -1,4 +1,4 @@
-# ccldpy (v2.0.0)
+# ccldpy (v2.0.1)
 
 Python package for simulating earthquake rupture surface representation for the purpose of computing finite-fault distance metrics (e.g., closest distance to the rupture surface, $R_{RUP}$; Joyner-Boore distance, $R_{JB}$), when published finite-fault models from the literature are not available.
 
@@ -8,7 +8,7 @@ The CCLD program was originally coded in Fortran by Brian Chiou and Robert Young
 3. Added magnitude-scaling relationship for <em>interface</em> subduction type events (Thingbaijam et al. 2017). Subduction-type relations for the position of the hypocenter on the rupture surface are assumed (Contreras et al. 2022)
 4. Flexibility to specify the number of simulations to use for each magnitude-scaling relation (e.g., use <em>N</em> simulations from one scaling-relation or partition <em>N</em> simulations into <em>M</em> appropriate scaling-relations.
    
-The current version of ccldpy (2.0.0) does not compute distances for real seismic stations, which can be performed using the the results of <em>ccldpy</em> and the P4CF program (Chiou, B.S-J. 2021).
+The current version of ccldpy (2.0.1) does not compute distances for real seismic stations, which can be performed using the the results of <em>ccldpy</em> and the P4CF program (Chiou, B.S-J. 2021).
 
 # Magnitude-Scaling Relationships:
 
@@ -144,7 +144,7 @@ The scaling-relationships proposed by Wells & Coppersmith (1994), Leonard (2014)
 
 ### Specifying Number of Simulations:
 
-The original CCLD program (Chiou and Youngs 2008) performed 101 simulations using a single scaling-relationship for a given earthquake. A major update to <em>ccldpy</em> (v2.0.0) is the ability for users to specify the number of simulations, which may include combinations of compatible scaling-relationships (i.e., the same "earthquake type" in Table 1). For example, if a user wants to implement seperate branches in the randomization process for a shallow-crustal event using only the Wells & Coppersmith (1994) and Thingbaijam et al. (2017) relationships at 1/3 and 2/3 weights, they can do so by allocating 1/3 of the total simulations to "WellsCoppersmith1994" and 2/3 of the total simulations to "ThingbaijamEtAl2017". It is important to note that the total number of simulations must be odd (in order to extract a true median), so <em>weights</em> are entered as "number of simulations". In the the example mentioned above, if we assume 101 total simulations, the user can allocate 34 (or 35) simulations to "WellsCoppersmith1994" and 67 (or 66) simulations to "ThingbaijamEtAl2017" which approximate the desired 1/3 and 2/3 weights. If a user specifies an even number of total simulations, <em>ccldpy</em> will add an additional simulation to one of the selected relationships for which the user allocated > 0 simulations. 
+The original CCLD program (Chiou and Youngs 2008) performed 101 simulations using a single scaling-relationship for a given earthquake. A major update to <em>ccldpy</em> (v2.0.1) is the ability for users to specify the number of simulations, which may include combinations of compatible scaling-relationships (i.e., the same "earthquake type" in Table 1). For example, if a user wants to implement seperate branches in the randomization process for a shallow-crustal event using only the Wells & Coppersmith (1994) and Thingbaijam et al. (2017) relationships at 1/3 and 2/3 weights, they can do so by allocating 1/3 of the total simulations to "WellsCoppersmith1994" and 2/3 of the total simulations to "ThingbaijamEtAl2017". It is important to note that the total number of simulations must be odd (in order to extract a true median), so <em>weights</em> are entered as "number of simulations". In the the example mentioned above, if we assume 101 total simulations, the user can allocate 34 (or 35) simulations to "WellsCoppersmith1994" and 67 (or 66) simulations to "ThingbaijamEtAl2017" which approximate the desired 1/3 and 2/3 weights. If a user specifies an even number of total simulations, <em>ccldpy</em> will add an additional simulation to one of the selected relationships for which the user allocated > 0 simulations. 
 
 Sensitivity studies suggest that 101 simulations is too few to approximate the expected distributions of rupture gemoetry (i.e., $A$, $AR$, $L$, and $W$) and stable distributions of $R_{RUP,s}$ for a given site. These studies were conducted by running <em>ccldpy</em> for a single set of source input parameters while varying the number of simulations for a single scaling relationship, and were performed for several sets of source input parameters. The distributions/statistics of $A$, $AR$, $L$, $W$ and $R_{RUP,s}$ at sample locations were assessed for stability. In other words, the objective was to locate the minimum number of simulations required to achieve the same distributions/statistics from a run which used a large number of simulations. Based on the results of these studies, it is recommended to use at least 300 simulations for each "model" listed in Table 1 in order to ensure the stochastic set of rupture surfaces is representative of the expected distributions. 
 
@@ -174,7 +174,7 @@ import ccldpy
 # 
 ### Simulation Methods:
 
-The current version of ccldpy (2.0.0) supports five methods of simulation, which are specified using the <em>method</em> indicators described below. 
+The current version of ccldpy (2.0.1) supports five methods of simulation, which are specified using the <em>method</em> indicators described below. 
 
 A = One or two nodal plane solutions (strike, dip, and rake) are known, however the first solution is preferred. Only the area, aspect-ratio, and position of hypocenter on the rupture surface are randomized between simulation. This method is not recommended because in reality we cannot be certain of a preferred orientation.
 
@@ -262,7 +262,7 @@ simulate_rupture_surface(eqid, eqType, region, elat, elon, hypd, magnitude, meth
 
 # Non-Technical Note:
 
-The follow files are not supported by <em>ccldpy</em> (v2.0.0); they are deprecated files associated with <em>ccldpy</em> (v1.0.0):
+The follow files are not supported by <em>ccldpy</em> versions v2.0.0 and greater; they are deprecated files associated with <em>ccldpy</em> (v1.0.0):
 - ccldpy.c
 - ccldpy.cp39-win_amd64.pyd
 - ccldpy.pyx
