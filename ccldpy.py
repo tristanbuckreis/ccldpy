@@ -1,5 +1,5 @@
-# ccldpy v2.0.0
-# June 12, 2024
+# ccldpy v2.0.1
+# August 27, 2024
 # Tristan E. Buckreis (tristanbuckreis@ucla.edu)
 # https://github.com/tristanbuckreis/ccldpy/
 
@@ -407,7 +407,7 @@ def get_hyp_down_dip_position(eqtype, region):
     ied2 = np.array([0.00, 0.013, 0.053, 0.143, 0.297, 0.500, 0.703, 0.857, 0.947, 0.987, 1.00])
     if eqtype in ['crustal', 'stable']:
         fd = discrete(nxf, xdf, ssd, np.random.rand())
-    elif eqtype == 'instraslab':
+    elif eqtype == 'intraslab':
         fd = discrete(nxf, xdf, iad, np.random.rand())
     elif eqtype == 'interface':
         if region == "japan": 
@@ -1090,7 +1090,7 @@ def get_rupture_surface_simulations(eqid,
 
     # Convert radians to degrees  -------------------------------------------------------------------------------------------
     strikes = np.round( strikes * 180 / np.pi, 6) 
-    dips = np.round( dips * 180 / np.pi, 6)
+    dips = np.round( dips * 180 / np.pi, 6) 
 
     # Return everything  ----------------------------------------------------------------------------------------------------
     return(median_simulation,
